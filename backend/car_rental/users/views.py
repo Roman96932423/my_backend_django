@@ -6,8 +6,12 @@ def get_user_page(request):
 
 
 def get_user_info(request, name):
-    surname = request.GET.get('surname', 'Surname not Found')
-    return HttpResponse(f'User name: {name}, user surname: {surname}')
+    surname = request.GET.get('surname', None)
+
+    if surname:
+        return HttpResponse(f'User name: {name}, user surname: {surname}')
+
+    return HttpResponse(f'User name: {name}')
 
 
 def get_user_age(request):
